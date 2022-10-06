@@ -2,13 +2,9 @@
 import { reactive } from "vue";
 import PostForm from "./components/PostForm.vue";
 import PersonList from "./components/PersonList.vue";
+import { person } from "./components/type/person.vue";
 
-interface people {
-  name: string;
-  age: number;
-}
-
-const people = reactive<Array<people>>([
+const people = reactive<Array<person>>([
   { name: "John", age: 21 },
   { name: "Doe", age: 30 },
 ]);
