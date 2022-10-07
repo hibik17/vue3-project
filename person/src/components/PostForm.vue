@@ -1,21 +1,25 @@
 <script setup lang="ts">
-import { computed, reactive } from "vue";
+import { reactive, computed } from "vue";
 import { inputData } from "./type/InputData.vue";
 
-const postForm = () => {
-  alert("name:" + postData.name + " age:" + postData.age);
-};
-
 const postData = reactive<inputData>({
-  name: "",
-  age: 0,
+  name: null,
+  age: null,
 });
 
 const nameLength = computed(() => {
-  if (postData.name.length > 10) {
-    return "name is too long";
+  if (postData.name === null) {
+    return;
+  } else if (postData.name!.length > 10) {
+    return "name is too long. put your name under 10 words";
   }
 });
+
+// arrayに追加する処理（postForm）
+const emit = defineEmits(["postForm"]);
+const postForm = () => {
+  emit("postForm", postData);
+};
 </script>
 
 <template>
@@ -30,7 +34,7 @@ const nameLength = computed(() => {
         <label for="age">age: </label>
         <input type="number" placeholder="age filed" v-model="postData.age" />
       </div>
-      <button @click="postForm" class="postButton">register</button>
+      <button @click.prevent="postForm" class="postButton">register</button>
     </form>
   </div>
 </template>
@@ -44,8 +48,9 @@ const nameLength = computed(() => {
   color: white;
   background-color: greenyellow;
   border-radius: 5px;
-  box-shadow: 20px;
+  box-shadow: 3px;
   margin: 10px 70px;
+  border-color: white;
 }
 .age {
   margin: 20px;

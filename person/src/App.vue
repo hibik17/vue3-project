@@ -8,12 +8,22 @@ const people = reactive<Array<person>>([
   { name: "John", age: 21 },
   { name: "Doe", age: 30 },
 ]);
+
+const postForm = (postData: person) => {
+  people.push(postData);
+  console.log("post action done...");
+};
+
+const deletePerson = (index: number) => {
+  people.splice(index, 1);
+  console.log(`you have deleted index of ${index}`);
+};
 </script>
 
 <template>
   <div class="container">this is vue</div>
-  <PostForm />
-  <PersonList :people="people" />
+  <PostForm @postForm="postForm" />
+  <PersonList :people="people" @deletePerson="deletePerson" />
 </template>
 
 <style>
