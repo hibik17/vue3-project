@@ -10,12 +10,28 @@ const defaultTodos = [
   { id: 2, title: "second" },
 ];
 
-export const todos = ref<Todo[]>(defaultTodos);
+// export const todos = ref<Todo[]>(defaultTodos);
 
-export const addTodo = (title: string) => {
-  const newData: Todo = {
-    id: Math.random(),
-    title,
+// export const addTodo = (title: string) => {
+//   const newData: Todo = {
+//     id: Math.random(),
+//     title,
+//   };
+//   todos.value.push(newData);
+// };
+
+export const todos = (() => {
+  // データの宣言
+  const todos = ref<Todo[]>(defaultTodos);
+
+  // データに追加をする関数の宣言
+  const addTodo = (title: string) => {
+    const newData: Todo = {
+      id: Math.random(),
+      title,
+    };
+    todos.value.push(newData);
   };
-  todos.value.push(newData);
-};
+
+  return { todos, addTodo };
+})();
