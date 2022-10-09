@@ -7,7 +7,7 @@ if (!state) {
   throw new Error("state is undefined");
 }
 
-const { Data } = state;
+const { Data, deleteBook } = state;
 </script>
 
 <template>
@@ -22,6 +22,14 @@ const { Data } = state;
       <tr :key="index">
         <td>{{ book.title }}</td>
         <td>{{ book.description }}</td>
+        <td>
+          <button
+            @click="deleteBook(index)"
+            class="px-4 py-2 font-semibold text-blue-700 bg-transparent border border-blue-500 rounded hover:bg-blue-500 hover:text-white hover:border-transparent"
+          >
+            delete
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>

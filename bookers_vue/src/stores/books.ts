@@ -30,7 +30,13 @@ export const books = (() => {
     console.log("insert action done....");
   };
 
-  return { Data, addBook, newBook };
+  // define book delete buttonAction
+  const deleteBook = (index: number) => {
+    Data.splice(index, 1);
+    console.log("delete action was done ...");
+  };
+
+  return { Data, addBook, newBook, deleteBook };
 })();
 
 type bookType = typeof books;
