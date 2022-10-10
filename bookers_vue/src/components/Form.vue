@@ -1,12 +1,7 @@
 <script setup lang="ts">
-import { inject } from "vue";
-import { bookKey } from "../stores/books";
-const state = inject(bookKey);
+import { useBooks } from "../stores/books";
 
-if (!state) {
-  throw new Error("plz put something");
-}
-const { newBook, addBook } = state;
+const { newBook, addBook } = useBooks();
 </script>
 
 <template>

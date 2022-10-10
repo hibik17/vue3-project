@@ -1,12 +1,13 @@
 import { reactive } from "vue";
 import { defineStore } from "pinia";
+
 // const type of books data
 type Book = {
   title: string;
   description: string;
 };
 
-export const books = (() => {
+export const useBooks = defineStore("books", () => {
   // define new book data
   const newBook: Book = reactive<Book>({ title: "", description: "" });
   // define book data
@@ -37,4 +38,4 @@ export const books = (() => {
   };
 
   return { Data, addBook, newBook, deleteBook };
-})();
+});

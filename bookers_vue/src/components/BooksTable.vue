@@ -1,13 +1,9 @@
 <script setup lang="ts">
-import { inject } from "vue";
-import { bookKey } from "../stores/books";
+import { useBooks } from "../stores/books";
 
-const state = inject(bookKey);
-if (!state) {
-  throw new Error("state is undefined");
-}
-
-const { Data, deleteBook } = state;
+const books = useBooks();
+const Data = books.Data;
+const deleteBook = books.deleteBook;
 </script>
 
 <template>
