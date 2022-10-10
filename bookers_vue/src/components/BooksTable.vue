@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { useBooks } from "../stores/books";
 
-const books = useBooks();
-const Data = books.Data;
-const deleteBook = books.deleteBook;
+const { Data, deleteBook } = useBooks();
 </script>
 
 <template>
