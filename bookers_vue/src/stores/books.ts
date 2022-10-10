@@ -1,5 +1,5 @@
-import { reactive, type InjectionKey } from "vue";
-
+import { reactive } from "vue";
+import { defineStore } from "pinia";
 // const type of books data
 type Book = {
   title: string;
@@ -38,6 +38,3 @@ export const books = (() => {
 
   return { Data, addBook, newBook, deleteBook };
 })();
-
-type bookType = typeof books;
-export const bookKey: InjectionKey<bookType> = Symbol("usebooks");
