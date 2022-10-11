@@ -1,9 +1,11 @@
 <script setup lang="ts">
-const msg = "this message is from vue.js";
+import { counter } from "../stores/counter";
+
+const { count, double, increment, decrement } = counter();
 </script>
 
 <template>
-  <div>{{ msg }}</div>
+  <div>{{ `${count}回buttonを押しました` }}</div>
 </template>
 
 <style></style>
