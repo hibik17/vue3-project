@@ -1,11 +1,15 @@
 <script setup lang="ts">
+import { ref, watch } from "vue";
 import { counter } from "../stores/counter";
 
 const { count, double, increment, decrement } = counter();
 </script>
 
 <template>
-  <div class="content">{{ `${count}回buttonを押しました` }}</div>
+  <div class="content">
+    {{ count }}
+    <button @click="increment" class="addButton">add</button>
+  </div>
 </template>
 
 <style scoped>
@@ -17,5 +21,14 @@ const { count, double, increment, decrement } = counter();
   flex-direction: column;
   margin: 0 auto;
   text-align: center;
+}
+
+.addButton {
+  width: 50px;
+  color: white;
+  background-color: lime;
+  border: none;
+  border-radius: 5px;
+  margin: 10px auto;
 }
 </style>

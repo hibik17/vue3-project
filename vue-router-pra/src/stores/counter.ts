@@ -9,7 +9,8 @@ export const counter = defineStore("counter", () => {
   });
 
   const increment = () => {
-    return count.value++;
+    count.value++;
+    console.log(`${count.value}回に数字が変更されました`);
   };
 
   const decrement = () => {
